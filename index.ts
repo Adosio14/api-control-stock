@@ -4,6 +4,7 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
 import router from "./src/routes";
+import 'dotenv/config'
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -14,8 +15,6 @@ app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
 
-createConnection("default")
-  .then(() => console.log("Conectado a la BD"))
-  .catch((err) => console.log(err));
+const conn = createConnection()
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

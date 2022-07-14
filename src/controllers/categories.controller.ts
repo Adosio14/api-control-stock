@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import Categories from "../types/categories";
+import Categories from "../types/category";
 
 const repository = getRepository(Categories);
 
