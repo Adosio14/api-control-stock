@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import bodyParser from "body-parser";
 import { createConnection } from "typeorm";
+import router from "./src/routes";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(router);
 
 createConnection("default")
   .then(() => console.log("Conectado a la BD"))
